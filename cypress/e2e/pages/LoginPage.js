@@ -33,8 +33,15 @@ class LoginPage {
   }
 
   logOff() {
-    return cy.xpath(locatorButtonMenu).click();
+    return cy.xpath(locatorButtonMenu).click()
+  }
+
+
+  logOff1() {
     return cy.xpath(locatorButtonLogoff).click();
+  }
+
+  logOff2() {
     return cy.xpath(locatorSelectLang).should("exist");
   }
 }

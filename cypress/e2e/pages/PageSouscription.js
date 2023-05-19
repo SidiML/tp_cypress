@@ -37,39 +37,39 @@ class PageSouscription {
   }
 
   setNom(texte) {
-    return cy.xpath(locatorInputNom).type(texte);
+    return cy.xpath(locatorInputNom).first().type(texte);
   }
 
   setDateNaissance(texte) {
-    return cy.xpath(locatorInputDateNaissance).type(texte);
+    return cy.xpath(locatorInputDateNaissance).first().type(texte);
   }
 
   setAdresse(texte) {
-    return cy.xpath(locatorInputAdresse).type(texte);
+    return cy.xpath(locatorInputAdresse).first().type(texte);
   }
 
   setPays(texte) {
-    return cy.xpath(locatorSelectPays).select(texte);
+    return cy.xpath(locatorSelectPays).first().select(texte);
   }
 
   setVille(texte) {
-    return cy.xpath(locatorSelectVille).select(texte);
+    return cy.xpath(locatorSelectVille).first().select(texte);
   }
 
   setCodePostal(texte) {
-    return cy.xpath(locatorInputCP).type(texte);
+    return cy.xpath(locatorInputCP).first().type(texte);
   }
 
   setPassport(texte) {
-    return cy.xpath(locatorInputPassport).type(texte);
+    return cy.xpath(locatorInputPassport).first().type(texte);
   }
 
   setCIN(texte) {
-    return cy.xpath(locatorInputCIN).type(texte);
+    return cy.xpath(locatorInputCIN).first().type(texte);
   }
 
   setEmail(texte) {
-    return cy.xpath(locatorInputUsername).type(texte);
+    return cy.xpath(locatorInputUsername).first().type(texte);
   }
 
 
@@ -79,13 +79,18 @@ class PageSouscription {
   }
 
   setTel(texte) {
-    return cy.xpath(locatorInputTel).type(texte);
+    return cy.xpath(locatorInputTel).first().type(texte);
   }
 
   setPassword(texte) {
-    return cy.xpath(locatorInputPassword).type(texte);
-    return cy.xpath(locatorInputConfirmPassword).type(texte);
+    return cy.xpath(locatorInputPassword).first().type(texte);
+    
   }
+
+  setPasswordConfirm(texte) {
+    return cy.xpath(locatorInputConfirmPassword).first().type(texte);
+  }
+
 
   setNomConjoint(texte) {
     return cy.xpath(locatorInputNomConjoint).type(texte);
@@ -112,7 +117,7 @@ class PageSouscription {
   }
 
   validate() {
-    return cy.xpath(locatorButtonValider).should('contain','/login').click();
+    return cy.xpath(locatorButtonValider).first().click();
         
   }
 }

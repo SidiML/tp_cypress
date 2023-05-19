@@ -22,12 +22,17 @@ class StepSouscription{
         pageSouscription.setPassport(data.passport)
         pageSouscription.setCIN(data.cin)
         const username = pageSouscription.generateEmail(prenom, nom)
-        data.email = username
+        data.username = username
         pageSouscription.setEmail(username)
         pageSouscription.setTel(data.tel)
         pageSouscription.setPassword(data.password)
-        pageSouscription.setNomConjoint(faker.person.lastName())
-        pageSouscription.setPrenomConjoint(faker.person.firstName())
+        pageSouscription.setPasswordConfirm(data.confirmPassword)
+        const nomconj = faker.person.lastName()
+        data.nomConjoint = nomconj
+        pageSouscription.setNomConjoint(nomconj)
+        const prenomconj = faker.person.lastName()
+        data.prenomConjoint = prenomconj
+        pageSouscription.setPrenomConjoint(prenomconj)
         pageSouscription.setDateNaissanceConjoint(data.dateNaissanceConjoint)
         pageSouscription.validate()
         return data

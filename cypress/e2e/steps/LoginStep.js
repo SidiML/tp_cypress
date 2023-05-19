@@ -17,6 +17,11 @@ class LoginStep {
 
   }
 
+  Logout(){
+    loginPage.logOff()
+    loginPage.logOff1()
+  }
+
 }
 
 export default LoginStep;
