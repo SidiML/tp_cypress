@@ -105,15 +105,15 @@ class PageSouscription {
   }
 
   setRaisonSociale(texte) {
-    return cy.xpath(locatorSelectRaisonSociale).select(texte);
+    return cy.xpath(locatorSelectRaisonSociale).first().select(texte);
   }
 
   setSiret(texte) {
-    return cy.xpath(locatorInputSiret).type(texte);
+    return cy.xpath(locatorInputSiret).first().type(texte);
   }
 
   setNumberOfEmployees(texte) {
-    return cy.xpath(locatorSelectNombreSalarie).select(texte);
+    return cy.xpath(locatorSelectNombreSalarie).first().select(texte);
   }
 
   validate() {
