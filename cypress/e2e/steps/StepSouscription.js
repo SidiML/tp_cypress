@@ -70,6 +70,29 @@ class StepSouscription{
 
 
     }
+
+    CreatePartExistant(data){
+        pageSouscription.clickRegister()
+        pageSouscription.setType(data.type)
+        pageSouscription.setPrenom(data.prenom)
+        pageSouscription.setNom(data.nom)
+        pageSouscription.setDateNaissance(data.dateNaissance)
+        pageSouscription.setAdresse(data.adresse)
+        pageSouscription.setPays(data.pays)
+        pageSouscription.setVille(data.ville)
+        pageSouscription.setCodePostal(data.codePostal)
+        pageSouscription.setPassport(data.passport)
+        pageSouscription.setCIN(data.cin)
+        pageSouscription.setEmail(data.username)
+        pageSouscription.setTel(data.tel)
+        pageSouscription.setPassword(data.password)
+        pageSouscription.setPasswordConfirm(data.confirmPassword)
+        pageSouscription.setNomConjoint(data.nomConjoint)
+        pageSouscription.setPrenomConjoint(data.prenomConjoint)
+        pageSouscription.setDateNaissanceConjoint(data.dateNaissanceConjoint)
+        pageSouscription.validate()
+        return data
+}
 }
 
 export default StepSouscription

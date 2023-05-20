@@ -2,19 +2,23 @@ import LoginPage from "../pages/LoginPage";
 import LoginStep from "../steps/LoginStep";
 import StepSouscription from "../steps/StepSouscription";
 import StepGestionCompte from "../steps/StepGestionCompte";
+const xpathCheckFailMessage =  "//div[@aria-label='l’email est déjà utilisé. Essayez un autre email']"
 
 describe("TEST WEB OPEN CRUISE", () => {
   beforeEach(() => {
     cy.visit("https://opencruise-ok.sogeti-center.cloud/");
   });
-  it.skip("TEST01", () => {
+  it("TEST01", {tag: smoke}, () => {
+    
     const loginStep = new LoginStep();
     cy.log(`Se Connecter Compte Valide`);
     loginStep.setLogin("admin@test.com", "Sogeti33");
     loginStep.checkMessage("Bienvenue ADMIN TEST");
     cy.xpath('//button[@id="dropdownMenu2"]').screenshot();
   });
-  it.skip("TEST02", () => {
+   
+
+  it("TEST02", () => {
     const loginStep = new LoginStep();
     cy.log(`Se connecter Compte invalide`);
     loginStep.setLogin("XXXXXXX", "YYYYYY");
@@ -23,7 +27,7 @@ describe("TEST WEB OPEN CRUISE", () => {
     cy.xpath('//div[@role="alertdialog"]').screenshot();
   });
 
-  it.skip("TEST03", () => {
+  it("TEST03", () => {
     const stepSouscription = new StepSouscription();
     cy.log("**********   Inscription Compte Particulier    ************");
     cy.fixture("data-part.json", "utf8").as("users");
@@ -72,6 +76,19 @@ describe("TEST WEB OPEN CRUISE", () => {
       loginStep.checkMessage(` Bienvenue ${data.nom} ${data.prenom} `);
       loginStep.Logout();
       
+    });
+  });
+  it("TEST05", () => {
+    const stepSouscription = new StepSouscription();
+    cy.log("**********   Inscription Compte Particulier Avec Compte Existant    ************");
+    cy.fixture("userPart.json", "utf8").as("users");
+    cy.get("@users").then((data) => {
+      stepSouscription.CreatePartExistant(data);
+      
+      cy.wait(4000);
+      const loginStep = new LoginStep();
+      loginStep.CheckFailMessage(" l’email est déjà utilisé. Essayez un autre email ");
+      cy.xpath('//div[@role="alertdialog"]').screenshot();
     });
   });
 });
