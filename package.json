@@ -4,17 +4,32 @@
   "description": "Revision cypress Michel, Abdel et Ronaldo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "open": "cypress open",
+    "test:url1": "CYPRESS_ENV_URL=http://opencruise-ok.sogeti-center.cloud npx cypress run",
+    "test:url2": "CYPRESS_ENV_URL=http://opencruise-ko.sogeti-center.cloud npx cypress run",
+    "test:smoke": "cypress run --env grepTags='@smoke'",
+    "test:regression": "cypress run --env grepTags='@regression'",
+    "openby:chrome": "cypress run --e2e --browser chrome",
+    "openby:firefox": "cypress run --e2e --browser firefox",
+    "openby:electron": "cypress run --e2e --browser electron",
+    "cypress:cucumber": "cypress run --spec cypress/e2e/tests/OpenCruise.feature"
   },
   "author": "Balamou,Abdel,Ronaldo,Sidi",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.12.0"
+    "@cypress/grep": "^3.1.5",
+    "cypress": "^12.12.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "^3.5.0"
   },
   "dependencies": {
-    "@cypress/grep": "^3.1.5",
     "@cypress/xpath": "^2.0.3",
     "@faker-js/faker": "^8.0.1",
     "cypress-wait-until": "^1.7.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/cyp_cucumber"
   }
 }

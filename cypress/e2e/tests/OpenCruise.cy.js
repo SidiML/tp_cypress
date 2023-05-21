@@ -2,17 +2,17 @@ import LoginPage from "../pages/LoginPage";
 import LoginStep from "../steps/LoginStep";
 import StepSouscription from "../steps/StepSouscription";
 import StepGestionCompte from "../steps/StepGestionCompte";
-const xpathCheckFailMessage =  "//div[@aria-label='l’email est déjà utilisé. Essayez un autre email']"
+
 
 describe("TEST WEB OPEN CRUISE", () => {
   beforeEach(() => {
-    cy.visit("https://opencruise-ok.sogeti-center.cloud/");
+    cy.visit(Cypress.env('url'));
   });
-  it("TEST01", {tag: smoke}, () => {
+  it("TEST01 **** Se Connecter Compte Valide ****",{ tags: '@smoke' }, () => {
     
     const loginStep = new LoginStep();
     cy.log(`Se Connecter Compte Valide`);
-    loginStep.setLogin("admin@test.com", "Sogeti33");
+    loginStep.setLogin(Cypress.env("username"),Cypress.env("password"));
     loginStep.checkMessage("Bienvenue ADMIN TEST");
     cy.xpath('//button[@id="dropdownMenu2"]').screenshot();
   });
